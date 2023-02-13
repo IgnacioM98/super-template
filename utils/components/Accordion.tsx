@@ -56,7 +56,7 @@ export const HabilityAccordion: React.FC<Props> = ({
     <>
       <TouchableWithoutFeedback onPress={handlePress}>
         <View style={styles.titleContainer}>
-          <Text style={[globalStyles.poppinsBold, styles.title]}>{title}</Text>
+          <Text style={[styles.title]}>{title}</Text>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }}>
             <MaterialIcons name="keyboard-arrow-down" size={20} color="black" />
           </Animated.View>
