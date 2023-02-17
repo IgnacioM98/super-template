@@ -1,11 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from "react-redux";
 import { TypedUseSelectorHook } from "react-redux/es/types";
-import { rootReducer } from "./rootReducers";
+// import { rootReducer } from "./rootReducers";
+import authReducer from "../features/auth/authSlice";
+
+const reducers = { auth: authReducer };
 
 const configureAppStore = () => {
   const store = configureStore({
-    reducer: rootReducer,
+    reducer: reducers,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
@@ -14,7 +17,7 @@ const configureAppStore = () => {
   if (process.env.NODE_ENV === "development") {
     if ((module as any).hot) {
       (module as any).hot.accept(() => {
-        store.replaceReducer(rootReducer);
+        store.replaceReducer(reducers);
       });
     }
   }
